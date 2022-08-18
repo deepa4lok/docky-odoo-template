@@ -8,10 +8,11 @@ die() { yell "$*"; exit 111; }
 try() { "$@" || die "cannot $*"; }
 IMAGE=$1
 TAG=$2
-# VOLUMES="-v $(pwd)/data:/home/odoo/data"
-DC_DIR="/home/docky/club3d-prod"
+HOME_FOLDER=$3
+
 if [[ -z $1 ]]
     then
+        docker ps -a
         echo "Which Image should be altered for deploy?"
         read IMAGE
         echo "Which Tag?"
@@ -23,10 +24,18 @@ if [[ -z $1 ]]
                 IMAGENAME=${IMAGE}:${TAG}
             fi
 fi
+if [[ -z $3 ]]
+    then
+      echo "Which home folder for this server?"
+      read HOME_FOLDER
+fi
+VOLUMES="-v $(pwd)/data:/data/odoo"
+DC="docker/compose"
+DC_DIR="/home/docky/$HOME_FOLDER"
 set -e
 
-VERSION="1.24.1"
-DCIMAGE="docker/compose:$VERSION"
+#VERSION="1.24.1"
+DCIMAGE="docker/compose" #:$VERSION"
 # Setup options for connecting to docker host
 if [ -z "$DOCKER_HOST" ]; then
     DOCKER_HOST="/var/run/docker.sock"
@@ -81,32 +90,35 @@ if [[ ${A} = "y" ]]
                 VOLUMES="$VOLUMES -v $(pwd)/.db/socket/:/var/run/postgresql/"
             fi
 fi
+#docker network ls
+#echo "Which Docker Network do you want to use?"
+#read NETWORK
+# try docker run -it -u root ${VOLUMES} --network ${NETWORK} --name hoedoedeploy ${IMAGENAME} bash
 
-# try docker run -it -u root ${VOLUMES} --name hoedoedeploy ${IMAGENAME} bash
 try docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" $DCIMAGE -f docker-compose-hdd.yml up -d
-docker attach club3d-prod_hoedoedeploy_1
+docker attach "${HOME_FOLDER}_hoedoedeploy_1"
 
-#read -p "Do you want to commit the changes you made to ${IMAGENAME}? (y/n): " B
-#if [[ ${B} = "y" ]]
-#    then
-#        try docker commit hoedoedeploy ${IMAGENAME}
-#    else
-#        read -p "Do you want to commit to a different image? (y/n): " D
-#    if [[ ${D} = "y" ]]
-#        then
-#            read -p "Please specify the IMAGE:TAG you want to commit to:" E
-#            echo "Are you sure you want to commit to $E?"
-#            read F
-#            if [[ ${F} = "y" ]]
-#                then
-#                    try docker commit hoedoedeploy $E
-#                    OLDIMAGEIDALT=$(docker images -q --filter=reference=${E})
-#            fi
-#    fi
-#fi
+read -p "Do you want to commit the changes you made to ${IMAGENAME}? (y/n): " B
+if [[ ${B} = "y" ]]
+    then
+        try docker commit "${HOME_FOLDER}_hoedoedeploy_1" ${IMAGENAME}
+    else
+        read -p "Do you want to commit to a different image? (y/n): " D
+    if [[ ${D} = "y" ]]
+        then
+            read -p "Please specify the IMAGE:TAG you want to commit to:" E
+            echo "Are you sure you want to commit to $E?"
+            read F
+            if [[ ${F} = "y" ]]
+                then
+                    try docker commit "${HOME_FOLDER}_hoedoedeploy_1" $E
+                    OLDIMAGEIDALT=$(docker images -q --filter=reference=${E})
+            fi
+    fi
+fi
 
-echo "Update-Container hoedoedeploy will now be deleted"
-docker rm club3d-prod_hoedoedeploy_1
+echo "Update-Container "${HOME_FOLDER}_hoedoedeploy_1" will now be deleted"
+docker rm "${HOME_FOLDER}_hoedoedeploy_1"
 
 if [[ ${B} = "y" ]]
     then
