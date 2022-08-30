@@ -24,53 +24,17 @@ if [[ -z $1 ]]
                 IMAGENAME=${IMAGE}:${TAG}
             fi
 fi
+export IMAGENAME=$IMAGENAME
+
 if [[ -z $3 ]]
     then
-      echo "Which home folder for this server?"
-      read HOME_FOLDER
+      read -p "Which path including home folder for this server? (default pwd) " HOME_PATH
 fi
-VOLUMES="-v $(pwd)/data:/data/odoo"
-DC="docker/compose"
-DC_DIR="/home/docky/$HOME_FOLDER"
-set -e
+HOME_PATH="${HOME_PATH:=$(pwd)}"
+HOME_FOLDER=$(basename $HOME_PATH)
 
-#VERSION="1.24.1"
-DCIMAGE="docker/compose" #:$VERSION"
-# Setup options for connecting to docker host
-if [ -z "$DOCKER_HOST" ]; then
-    DOCKER_HOST="/var/run/docker.sock"
-fi
-if [ -S "$DOCKER_HOST" ]; then
-    DOCKER_ADDR="-v $DOCKER_HOST:$DOCKER_HOST -e DOCKER_HOST"
-else
-    DOCKER_ADDR="-e DOCKER_HOST -e DOCKER_TLS_VERIFY -e DOCKER_CERT_PATH"
-fi
-# Setup volume mounts for compose config and context
-if [ "$(pwd)" != '/' ]; then
-    VOLUMES="-v $(pwd):$(pwd)"
-fi
-if [ -n "$COMPOSE_FILE" ]; then
-    COMPOSE_OPTIONS="$COMPOSE_OPTIONS -e COMPOSE_FILE=$COMPOSE_FILE"
-    compose_dir=$(realpath $(dirname $COMPOSE_FILE))
-fi
-COMPOSE_OPTIONS="$COMPOSE_OPTIONS -e IMAGENAME=$IMAGENAME"
-# TODO: also check --file argument
-if [ -n "$compose_dir" ]; then
-    VOLUMES="$VOLUMES -v $compose_dir:$compose_dir"
-fi
-if [ -n "$HOME" ]; then
-    VOLUMES="$VOLUMES -v $HOME:$HOME -v $HOME:/root" # mount $HOME in /root to share docker.config
-fi
-# Only allocate tty if we detect one
-if [ -t 0 -a -t 1 ]; then
-        DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS -t"
-fi
-# Always set -i to support piped and terminal input in run/exec
-DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS -i"
-# Handle userns security
-if [ ! -z "$(docker info 2>/dev/null | grep userns)" ]; then
-    DOCKER_RUN_OPTIONS="$DOCKER_RUN_OPTIONS --userns=host"
-fi
+
+set -e
 
 OLDIMAGEID=$(docker images -q --filter=reference=${IMAGENAME})
 
@@ -82,21 +46,13 @@ if [[ ${A} = "y" ]]
                 try docker rm -f $(docker ps -q -f "ancestor=${OLDIMAGEID}")
                 echo "Removed containers derived from Image ${OLDIMAGEID}."
         fi
-        read -p "Do you want to use the docker network connection with the database, if not you
-         have to do odoo --db_host=xxx.xxx.xxx.xxx --db_port=5432
-         (y/n): " K
-            if [[ ${K} = "y" ]]
-                then
-                VOLUMES="$VOLUMES -v $(pwd)/.db/socket/:/var/run/postgresql/"
-            fi
-fi
-#docker network ls
-#echo "Which Docker Network do you want to use?"
-#read NETWORK
-# try docker run -it -u root ${VOLUMES} --network ${NETWORK} --name hoedoedeploy ${IMAGENAME} bash
+        echo "If the connection to the database is not defined in docker-compose-hdd.yml, you
+         have to do odoo --db_host=xxx.xxx.xxx.xxx --db_port=5432. With most servers there is a connection defined"
 
-try docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" $DCIMAGE -f docker-compose-hdd.yml up -d
-docker attach "${HOME_FOLDER}_hoedoedeploy_1"
+fi
+
+try docker compose -f docker-compose-hdd.yml up -d
+docker attach "${HOME_FOLDER}-hoedoedeploy-1"
 
 read -p "Do you want to commit the changes you made to ${IMAGENAME}? (y/n): " B
 if [[ ${B} = "y" ]]
@@ -117,8 +73,8 @@ if [[ ${B} = "y" ]]
     fi
 fi
 
-echo "Update-Container "${HOME_FOLDER}_hoedoedeploy_1" will now be deleted"
-docker rm "${HOME_FOLDER}_hoedoedeploy_1"
+echo "Update-Container "${HOME_FOLDER}-hoedoedeploy-1" will now be deleted"
+docker rm -f "${HOME_FOLDER}-hoedoedeploy-1"
 
 if [[ ${B} = "y" ]]
     then
@@ -148,33 +104,15 @@ if [[ ${B} = "y" ]] && [[ ${A} != "y" ]]
                 try docker rm -f $(docker ps -q -f "ancestor=${OLDIMAGEID}")
                 echo "Removed containers derived from Image ${OLDIMAGEID}."
         fi
-elif [[ ${B} = "y" ]]
+elif [[ ${A} = "y" ]]
     then
-        echo "Do you want to run \"docker-compose up -d\"? (y/n)"
+        echo "Do you want to run \"docker compose up -d\"? (y/n)"
         read I
         if [[ ${I} = "y" ]]
             then
-                cd ${DC_DIR}
-                try docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" $DCIMAGE up -d
+                cd ${HOME_PATH}
+                try docker compose up -d
                 docker ps
                 echo "READY!!!"
-        fi
-elif [[ ${D} = "y" ]] && [[ ${F} = "y" ]]
-    then
-        echo "Do you want to stop and remove running containers from image ${E}?"
-        read H
-        if [[ ${H} = "y" ]]
-            then
-                try docker rm -f $(docker ps -q -f "ancestor=${OLDIMAGEIDALT}")
-                echo "Removed containers derived from Image ${OLDIMAGEIDALT}. Do you
-                want to run \"docker-compose up -d\"? (y/n)"
-                read J
-                if [[ ${J} = "y" ]]
-                    then
-                        cd ${DC_DIR}
-                        try docker run --rm $DOCKER_RUN_OPTIONS $DOCKER_ADDR $COMPOSE_OPTIONS $VOLUMES -w "$(pwd)" $DCIMAGE up -d
-                        docker ps
-                        echo "READY!!!"
-                fi
         fi
 fi
