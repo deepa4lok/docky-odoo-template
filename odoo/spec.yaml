@@ -1,0 +1,252 @@
+odoo:
+    defaults:
+        depth: 1
+    remotes:
+        oca: https://github.com/OCA/OCB.git
+    merges:
+        - remote: oca
+        - ref: "14.0"
+
+account-analytic:
+    modules: []
+    src: https://github.com/OCA/account-analytic 14.0
+
+account-budgeting:
+    modules: []
+    src: https://github.com/OCA/account-budgeting 14.0
+
+account-closing:
+    modules: []
+    src: https://github.com/OCA/account-closing 14.0
+
+account-consolidation:
+    modules: []
+    src: https://github.com/OCA/account-consolidation 14.0
+
+account-financial-reporting:
+    modules: []
+    src: https://github.com/OCA/account-financial-reporting 14.0
+
+account-financial-tools:
+    modules: []
+    src: https://github.com/OCA/account-financial-tools 14.0
+
+account-fiscal-rule:
+    modules: []
+    src: https://github.com/OCA/account-fiscal-rule 14.0
+
+account-invoice-reporting:
+    modules: []
+    src: https://github.com/OCA/account-invoice-reporting 14.0
+
+account-invoicing:
+    modules: []
+    src: https://github.com/OCA/account-invoicing 14.0
+
+account-payment:
+    modules: []
+    src: https://github.com/OCA/account-payment 14.0
+
+account-reconcile:
+    modules: []
+    src: https://github.com/OCA/account-reconcile 14.0
+
+agreement:
+    modules: []
+    src: https://github.com/OCA/agreement 14.0
+
+bank-payment:
+    modules: []
+    src: https://github.com/OCA/bank-payment 14.0
+
+bank-statement-import:
+    modules: []
+    src: https://github.com/OCA/bank-statement-import 14.0
+
+brand:
+    modules: []
+    src: https://github.com/OCA/brand 14.0
+
+calendar:
+    modules: []
+    src: https://github.com/OCA/calendar 14.0
+
+connector:
+    modules: []
+    src: https://github.com/OCA/connector 14.0
+
+connector-interfaces:
+    modules: []
+    src: https://github.com/OCA/connector-interfaces 14.0
+
+contract:
+    modules: []
+    src: https://github.com/OCA/contract 14.0
+
+credit-control:
+    modules: []
+    src: https://github.com/OCA/credit-control 14.0
+
+crm:
+    modules: []
+    src: https://github.com/OCA/crm 14.0
+
+data-protection:
+    modules: []
+    src: https://github.com/OCA/data-protection 14.0
+
+edi:
+    modules: []
+    src: https://github.com/OCA/edi 14.0
+
+event:
+    modules: []
+    src: https://github.com/OCA/event 14.0
+
+geospatial:
+    modules: []
+    src: https://github.com/OCA/geospatial 14.0
+
+helpdesk:
+    modules: []
+    src: https://github.com/OCA/helpdesk 14.0
+
+hr:
+    modules: []
+    src: https://github.com/OCA/hr 14.0
+
+hr-expense:
+    modules: []
+    src: https://github.com/OCA/hr-expense 14.0
+
+hr-holidays:
+    modules: []
+    src: https://github.com/OCA/hr-holidays 14.0
+
+intrastat-extrastat:
+    modules: []
+    src: https://github.com/OCA/intrastat-extrastat 14.0
+
+knowledge:
+    modules: []
+    src: https://github.com/OCA/knowledge 14.0
+
+l10n-netherlends:
+    modules: []
+    src: https://github.com/OCA/l10n-netherlands 14.0
+
+mis-builder:
+    modules: []
+    src: https://github.com/OCA/mis-builder 14.0
+
+mis-builder-contrib:
+    modules: []
+    src: https://github.com/OCA/mis-builder-contrib 14.0
+
+multi-company:
+    modules: []
+    src: https://github.com/OCA/multi-company 14.0
+
+odoorpc:
+    modules: []
+    src: https://github.com/OCA/odoorpc 14.0
+
+OpenUpgrade:
+    modules: []
+    src: https://github.com/OCA/OpenUpgrade 14.0
+
+openupgradelib:
+    modules: []
+    src: https://github.com/OCA/openupgradelib 14.0
+
+operating-unit:
+    modules: []
+    src: https://github.com/OCA/operating-unit 14.0
+
+partner-contact:
+    modules: []
+    src: https://github.com/OCA/partner-contact 14.0
+
+pms:
+    modules: []
+    src: https://github.com/OCA/pms 14.0
+
+queue:
+    modules: []
+    src: https://github.com/OCA/queue 14.0
+
+reporting-engine:
+    modules: []
+    src: https://github.com/OCA/reporting-engine 14.0
+
+rest-api:
+    modules: []
+    src: https://github.com/OCA/rest-api 14.0
+
+rest-framework:
+    modules: []
+    src: https://github.com/OCA/rest-framework 14.0
+
+server-auth:
+    modules: [ ]
+    src: https://github.com/OCA/server-auth 14.0
+
+server-backend:
+    modules: []
+    remotes:
+        oca: https://github.com/OCA/server-backend
+        hbrunn: https://github.com/hbrunn/server-backend
+    merges:
+        - oca 14.0
+        - hbrunn 14.0-base_push_notification
+
+server-brand:
+    modules: []
+    src: https://github.com/OCA/server-brand 14.0
+
+server-env:
+    modules: []
+    src: https://github.com/OCA/server-env 14.0
+
+server-tools:
+    modules: []
+    src: https://github.com/OCA/server-tools 14.0
+
+server-ux:
+    modules: []
+    src: https://github.com/OCA/server-ux 14.0
+
+storage:
+    modules: []
+    src: https://github.com/OCA/storage 14.0
+
+timesheet:
+    modules: []
+    src: https://github.com/OCA/timesheet 14.0
+
+web:
+    modules: []
+    src: https://github.com/OCA/web 14.0
+
+web-api:
+    modules: []
+    src: https://github.com/OCA/web-api 14.0
+
+webkit-tools:
+    modules: []
+    src: https://github.com/OCA/webkit-tools 14.0
+
+website:
+    modules: []
+    src: https://github.com/OCA/website-cms 14.0
+
+website-cms:
+    modules: []
+    src: https://github.com/OCA/website 14.0
+
+website-themes:
+    modules: []
+    src: https://github.com/OCA/website-themes 14.0
+
+
+
