@@ -1,4 +1,4 @@
-FROM magnuscolors/odoo-project:10.0-debian-stretch-batteries
+FROM ghcr.io/camptocamp/odoo-project:14.0-latest-batteries
 MAINTAINER Magnus
 
 # Project's specifics packages
@@ -10,8 +10,4 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 COPY ./requirements.txt /odoo/
 RUN cd /odoo && pip install -r requirements.txt
 
-ENV LIST_DB=True
-ENV LIMIT_TIME_CPU=6000
-ENV LIMIT_TIME_REAL=12000
-ENV ADDONS_PATH=/odoo/local-src,/odoo/src/addons,/odoo/links
 
