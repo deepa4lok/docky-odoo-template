@@ -1,5 +1,5 @@
 FROM ghcr.io/camptocamp/odoo-project:14.0-latest-batteries
-MAINTAINER Magnus
+MAINTAINER The Open Source Company
 
 # Project's specifics packages
 RUN DEBIAN_FRONTEND=noninteractive && \

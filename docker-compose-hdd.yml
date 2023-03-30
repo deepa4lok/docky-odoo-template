@@ -18,14 +18,11 @@
       - ADMIN_PASSWD=${ADMIN_PASSWD}
       - RUNNING_ENV=${ENV}
       - LIST_DB=${LIST_DB}
-#      - DEMO=False
       - LIMIT_TIME_CPU=${LIMIT_TIME_CPU}
       - LIMIT_TIME_REAL=${LIMIT_TIME_REAL}
       - DB_HOST=${DB_HOST}
       - ADDONS_PATH=${ADDONS_PATH
-#      - MARABUNTA_MODE=demo
-#      - VIRTUAL_HOST=${HOST}}
-#      - VIRTUAL_PORT=8069,8072/longpolling
+
     expose:
       - 8069
       - 8072

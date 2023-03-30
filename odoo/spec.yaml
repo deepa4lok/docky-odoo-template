@@ -51,10 +51,6 @@ account-reconcile:
     modules: []
     src: https://github.com/OCA/account-reconcile 14.0
 
-agreement:
-    modules: []
-    src: https://github.com/OCA/agreement 14.0
-
 bank-payment:
     modules: []
     src: https://github.com/OCA/bank-payment 14.0
@@ -79,9 +75,21 @@ connector-interfaces:
     modules: []
     src: https://github.com/OCA/connector-interfaces 14.0
 
+connector-telephony:
+    modules: []
+    src: https://github.com/OCA/connector-telephony 14.0
+
+connector-ecommerce:
+    modules: []
+    src: https://github.com/OCA/connector-ecommerce 14.0
+
 contract:
     modules: []
     src: https://github.com/OCA/contract 14.0
+
+commission:
+    modules: []
+    src: https://github.com/OCA/commission 14.0
 
 credit-control:
     modules: []
@@ -91,9 +99,25 @@ crm:
     modules: []
     src: https://github.com/OCA/crm 14.0
 
+currency:
+    modules: []
+    src: https://github.com/OCA/currency 14.0
+
 data-protection:
     modules: []
     src: https://github.com/OCA/data-protection 14.0
+
+dms:
+    modules: []
+    src: https://github.com/OCA/dms 14.0
+
+ddmrp:
+    modules: []
+    src: https://github.com/OCA/ddmrp 14.0
+
+e-commerce:
+    modules: []
+    src: https://github.com/OCA/e-commerce 14.0
 
 edi:
     modules: []
@@ -102,6 +126,14 @@ edi:
 event:
     modules: []
     src: https://github.com/OCA/event 14.0
+
+field-service:
+    modules: []
+    src: https://github.com/OCA/field-service 14.0
+
+fleet:
+    modules: []
+    src: https://github.com/OCA/fleet 14.0
 
 geospatial:
     modules: []
@@ -127,6 +159,10 @@ intrastat-extrastat:
     modules: []
     src: https://github.com/OCA/intrastat-extrastat 14.0
 
+iot:
+    modules: []
+    src: https://github.com/OCA/iot 14.0
+
 knowledge:
     modules: []
     src: https://github.com/OCA/knowledge 14.0
@@ -134,6 +170,22 @@ knowledge:
 l10n-netherlends:
     modules: []
     src: https://github.com/OCA/l10n-netherlands 14.0
+
+maintenance:
+    modules: []
+    src: https://github.com/OCA/maintenance 14.0
+
+manufacture:
+    modules: []
+    src: https://github.com/OCA/manufacture 14.0
+
+manufacture-reporting:
+    modules: []
+    src: https://github.com/OCA/manufacture-reporting 14.0
+
+margin-analysis:
+    modules: []
+    src: https://github.com/OCA/margin-analysis 14.0
 
 mis-builder:
     modules: []
@@ -147,9 +199,17 @@ multi-company:
     modules: []
     src: https://github.com/OCA/multi-company 14.0
 
+oca-agreement:
+    modules: []
+    src: https://github.com/OCA/oca-agreement 14.0
+
+odoo-pim:
+    modules: []
+    src: https://github.com/OCA/odoo-pim 14.0
+
 odoorpc:
     modules: []
-    src: https://github.com/OCA/odoorpc 14.0
+    src: https://github.com/OCA/odoorpc master
 
 OpenUpgrade:
     modules: []
@@ -157,7 +217,7 @@ OpenUpgrade:
 
 openupgradelib:
     modules: []
-    src: https://github.com/OCA/openupgradelib 14.0
+    src: https://github.com/OCA/openupgradelib master
 
 operating-unit:
     modules: []
@@ -171,21 +231,82 @@ pms:
     modules: []
     src: https://github.com/OCA/pms 14.0
 
+pos:
+    modules: []
+    src: https://github.com/OCA/pos 14.0
+
+product-attribute:
+    modules: []
+    src: https://github.com/OCA/product-attribute 14.0
+
+product-configurator:
+    modules: []
+    src: https://github.com/OCA/product-configurator 14.0
+
+product-pack:
+    modules: []
+    src: https://github.com/OCA/product-pack 14.0
+
+product-variant:
+    modules: []
+    src: https://github.com/OCA/product-variant 14.0
+
+project:
+    modules: []
+    src: https://github.com/OCA/project 14.0
+
+project-reporting:
+    modules: []
+    src: https://github.com/OCA/project-reporting 14.0
+
+
+purchase-reporting:
+    modules: []
+    src: https://github.com/OCA/purchase-reporting 14.0
+
+purchase-workflow:
+    modules: []
+    src: https://github.com/OCA/purchase-workflow 14.0
+
 queue:
     modules: []
     src: https://github.com/OCA/queue 14.0
+
+repair:
+    modules: []
+    src: https://github.com/OCA/repair 14.0
 
 reporting-engine:
     modules: []
     src: https://github.com/OCA/reporting-engine 14.0
 
-rest-api:
-    modules: []
-    src: https://github.com/OCA/rest-api 14.0
-
 rest-framework:
     modules: []
     src: https://github.com/OCA/rest-framework 14.0
+
+rma:
+    modules: []
+    src: https://github.com/OCA/rma 14.0
+
+sale-financial:
+    modules: []
+    src: https://github.com/OCA/sale-financial- 14.0
+
+sale-workflow:
+    modules: [ ]
+    src: https://github.com/OCA/sale-workflow 14.0
+
+sale-promotion:
+    modules: [ ]
+    src: https://github.com/OCA/sale-promotion 14.0
+
+sale-reporting:
+    modules: []
+    src: https://github.com/OCA/sale-reporting 14.0
+
+search-engine:
+    modules: []
+    src: https://github.com/OCA/search-engine 14.0
 
 server-auth:
     modules: [ ]
@@ -193,12 +314,7 @@ server-auth:
 
 server-backend:
     modules: []
-    remotes:
-        oca: https://github.com/OCA/server-backend
-        hbrunn: https://github.com/hbrunn/server-backend
-    merges:
-        - oca 14.0
-        - hbrunn 14.0-base_push_notification
+    src: https://github.com/OCA/server-backend 14.0
 
 server-brand:
     modules: []
@@ -220,9 +336,53 @@ storage:
     modules: []
     src: https://github.com/OCA/storage 14.0
 
+stock-logistics-reporting:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-reporting 14.0
+
+stock-logistics-warehouse:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-warehouse 14.0
+
+stock-logistics-request:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-request 14.0
+
+stock-logistics-availability:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-availability 14.0
+
+stock-logistics-barcode:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-barcode 14.0
+
+stock-logistics-tracking:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-tracking 14.0
+
+stock-logistics-interfaces:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-interfaces 14.0
+
+stock-logistics-orderpoint:
+    modules: []
+    src: https://github.com/OCA/stock-logistics-orderpoint 14.0
+
 timesheet:
     modules: []
     src: https://github.com/OCA/timesheet 14.0
+
+vertical-association:
+    modules: []
+    src: https://github.com/OCA/vertical-association 14.0
+
+vertical-education:
+    modules: []
+    src: https://github.com/OCA/vertical-education 14.0
+
+vertical-rental:
+    modules: []
+    src: https://github.com/OCA/vertical-rental 14.0
 
 web:
     modules: []
@@ -231,6 +391,10 @@ web:
 web-api:
     modules: []
     src: https://github.com/OCA/web-api 14.0
+
+webhook:
+    modules: []
+    src: https://github.com/OCA/webhook 14.0
 
 webkit-tools:
     modules: []
@@ -248,5 +412,8 @@ website-themes:
     modules: []
     src: https://github.com/OCA/website-themes 14.0
 
+wms:
+    modules: []
+    src: https://github.com/OCA/wms 14.0
 
 
