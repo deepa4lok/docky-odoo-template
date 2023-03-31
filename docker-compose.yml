@@ -39,6 +39,7 @@ services:
     environment:
       - POSTGRES_USER=${PGUSER}
       - POSTGRES_DB=${PGDATABASE}
+      - POSTGRES_PASSWORD=${PGPASSWORD}
     image: postgres:15.2
     restart: unless-stopped
 #    networks:
@@ -47,7 +48,7 @@ services:
       - .db/data/:/var/lib/postgresql/data
     ports:
       - 5432:5432
-      -
+
   odoo:
     build: odoo
 #    image: xxx

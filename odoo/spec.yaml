@@ -5,7 +5,7 @@ odoo:
         oca: https://github.com/OCA/OCB.git
     merges:
         - remote: oca
-        - ref: "14.0"
+          ref: "14.0"
 
 account-analytic:
     modules: []
