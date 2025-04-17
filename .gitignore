@@ -13,3 +13,5 @@
 /odoo/repo.yaml
 
 /pip-selfcheck.json
+.idea/
+.env

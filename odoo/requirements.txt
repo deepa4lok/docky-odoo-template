@@ -1,0 +1,17 @@
+reportlab==3.6.12
+unidecode
+xmltodict
+dicttoxml
+astor
+apns2
+pyfcm
+extract_msg
+pymupdf
+#pdftotext
+pdfplumber
+pypdf
+dateparser
+regex==2022.3.2
+xlrd==1.2.0
+python-jose
+paramiko==3.4.0
