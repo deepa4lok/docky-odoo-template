@@ -46,6 +46,6 @@ services:
     stdin_open: true
     tty: true
 #    extra_hosts:
-#      - "casa.tosc.nl:<xx.xx>"
+#      - "casa.tosc.nl:10.225.12.141"
 
 

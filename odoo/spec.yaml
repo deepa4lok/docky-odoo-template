@@ -199,10 +199,6 @@ multi-company:
     modules: []
     src: https://github.com/OCA/multi-company 14.0
 
-oca-agreement:
-    modules: []
-    src: https://github.com/OCA/oca-agreement 14.0
-
 odoo-pim:
     modules: []
     src: https://github.com/OCA/odoo-pim 14.0
@@ -221,7 +217,7 @@ openupgradelib:
 
 operating-unit:
     modules: []
-    src: https://github.com/OCA/operating-unit 14.0
+    src: https://github.com/tosccolors/operating-unit 14.0
 
 partner-contact:
     modules: []
@@ -259,7 +255,6 @@ project-reporting:
     modules: []
     src: https://github.com/OCA/project-reporting 14.0
 
-
 purchase-reporting:
     modules: []
     src: https://github.com/OCA/purchase-reporting 14.0
@@ -272,10 +267,6 @@ queue:
     modules: []
     src: https://github.com/OCA/queue 14.0
 
-repair:
-    modules: []
-    src: https://github.com/OCA/repair 14.0
-
 reporting-engine:
     modules: []
     src: https://github.com/OCA/reporting-engine 14.0
@@ -287,10 +278,6 @@ rest-framework:
 rma:
     modules: []
     src: https://github.com/OCA/rma 14.0
-
-sale-financial:
-    modules: []
-    src: https://github.com/OCA/sale-financial- 14.0
 
 sale-workflow:
     modules: [ ]
@@ -309,8 +296,8 @@ search-engine:
     src: https://github.com/OCA/search-engine 14.0
 
 server-auth:
-    modules: [ ]
-    src: https://github.com/OCA/server-auth 14.0
+    modules: []
+    src: https://github.com/tosccolors/server-auth 14.0
 
 server-backend:
     modules: []
@@ -344,14 +331,6 @@ stock-logistics-warehouse:
     modules: []
     src: https://github.com/OCA/stock-logistics-warehouse 14.0
 
-stock-logistics-request:
-    modules: []
-    src: https://github.com/OCA/stock-logistics-request 14.0
-
-stock-logistics-availability:
-    modules: []
-    src: https://github.com/OCA/stock-logistics-availability 14.0
-
 stock-logistics-barcode:
     modules: []
     src: https://github.com/OCA/stock-logistics-barcode 14.0
@@ -359,14 +338,6 @@ stock-logistics-barcode:
 stock-logistics-tracking:
     modules: []
     src: https://github.com/OCA/stock-logistics-tracking 14.0
-
-stock-logistics-interfaces:
-    modules: []
-    src: https://github.com/OCA/stock-logistics-interfaces 14.0
-
-stock-logistics-orderpoint:
-    modules: []
-    src: https://github.com/OCA/stock-logistics-orderpoint 14.0
 
 timesheet:
     modules: []
@@ -416,4 +387,31 @@ wms:
     modules: []
     src: https://github.com/OCA/wms 14.0
 
+vertical-publishing:
+    modules: []
+    src: https://{GITPWD}@github.com/deepa4lok/vertical-publishing 14.0-test
+    #this branch was renamed from 14.0-migration to 14.0-test
 
+vertical-events:
+    modules: []
+    src: https://{GITPWD}@github.com/deepa4lok/vertical-events 14.0-test
+    #this branch was renamed from 14.0 to 14.0-test
+
+misc:
+    modules: []
+    src: https://{GITPWD}@github.com/deepa4lok/misc 14.0-test
+    #this branch was renamed from 14.0 to 14.0-test
+
+roularta-addons:
+    modules: []
+    src: https://{GITPWD}@github.com/deepa4lok/roularta-addons 14.0-test
+    #this branch was renamed from 14.0 to 14.0-test
+
+licensed-modules:
+    modules: []
+    src: https://{GITPWD}@github.com/tosccolors/licensed-modules 14.0-test
+    #this branch was renamed from 14.0 to 14.0-test
+
+social:
+    modules: []
+    src: https://github.com/OCA/social 14.0
