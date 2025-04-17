@@ -1,0 +1,13 @@
+apns2
+xlrd==1.2.0
+Werkzeug==2.0.2
+pyfcm
+extract_msg
+python-jose
+barcode
+astor
+phonenumbers
+pypdf
+cryptography==36.0.0
+pyopenssl==20.0.1; python_version < '3.12'
+pyopenssl==24.1.0 ; python_version >= '3.12' # (Noble) min 23.2.0, pinned for compatibility with cryptography==42.0.8 and security patches
